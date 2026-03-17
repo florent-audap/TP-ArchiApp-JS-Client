@@ -75,13 +75,14 @@ document.getElementById('send-button').addEventListener('click', () => {
       "date": new Date().toLocaleString()
     };
 
-    fetch(`https://tp-archiapp-js-serveur.onrender.com/msg/post/${nouveauMsg.pseudo}/${nouveauMsg.msg}`).then(() => {
+    fetch(`https://tp-archiapp-js-serveur.onrender.com/msg/post/${encodeURIComponent(nouveauMsg.pseudo)}/${encodeURIComponent(nouveauMsg.msg)}`).then(() => {
           msgs.push(nouveauMsg);
           update();
           msgInput.value = "";
+          pseudoInput.value = "";
           });
-  } // Fermeture du IF
-}); // Fermeture du addEventListener
+  }
+});
 
 // 3. Changement de Style (Mode Sombre)
 document.getElementById('theme-toggle').addEventListener('click', () => {
