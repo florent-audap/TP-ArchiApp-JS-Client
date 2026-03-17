@@ -77,10 +77,11 @@ document.getElementById('send-button').addEventListener('click', () => {
 
     fetch(`https://tp-archiapp-js-serveur.onrender.com/msg/post/${nouveauMsg.pseudo}/${nouveauMsg.msg}`).then(() => {
           msgs.push(nouveauMsg);
-          update(msgs);
+          update();
           msgInput.value = "";
-      })
-});
+          });
+  } // Fermeture du IF
+}); // Fermeture du addEventListener
 
 // 3. Changement de Style (Mode Sombre)
 document.getElementById('theme-toggle').addEventListener('click', () => {
