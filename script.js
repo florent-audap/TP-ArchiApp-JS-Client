@@ -75,16 +75,11 @@ document.getElementById('send-button').addEventListener('click', () => {
       "date": new Date().toLocaleString()
     };
 
-    fetch(`https://tp-archiapp-js-serveur.onrender.com/msg/post/${nouveauMsg.pseudo}/${nouveauMsg.msg}`);
-
-    // On vide les champs
-    msgInput.value = "";
-
-    // On rafraîchit la vue
-    update(msgs);
-  } else {
-    alert("Veuillez entrer un message !");
-  }
+    fetch(`https://tp-archiapp-js-serveur.onrender.com/msg/post/${nouveauMsg.pseudo}/${nouveauMsg.msg}`).then(() => {
+          msgs.push(nouveauMsg);
+          update(msgs);
+          msgInput.value = "";
+      })
 });
 
 // 3. Changement de Style (Mode Sombre)
